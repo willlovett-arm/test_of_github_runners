@@ -14,8 +14,8 @@ jobs:
     - name: Install GCC
       run: sudo apt-get update && sudo apt-get install -y gcc
 
-    - name: Build helloworld.cpp
-      run: gcc -o helloworld helloworld.cpp
+    - name: Build helloworld.c
+      run: gcc -o helloworld helloworld.c
 
     - name: Run helloworld
       run: ./helloworld
