@@ -12,13 +12,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install GCC
-      run: sudo apt-get update && sudo apt-get install -y gcc
+      run: sudo apt-get update && sudo apt-get install -y gcc-14
 
     - name: Build helloworld.cpp
-      run: gcc -o helloworld helloworld.cpp
+      run: gcc-14 -o helloworld helloworld.cpp
 
     - name: Run helloworld
       run: ./helloworld
 
     - name: report compiler version
-      run: gcc --version
+      run: gcc-14 --version
