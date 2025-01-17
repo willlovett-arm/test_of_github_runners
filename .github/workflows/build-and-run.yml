@@ -5,14 +5,14 @@ on: [push, pull_request]
 
 jobs:
   build-and-run:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-22.04-arm
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Install GCC
-      run: sudo apt-get update && sudo apt-get install -y gcc-14
+      run: sudo apt-get update && sudo apt-get install -y gcc-12
       
     - name: Install ACfL
       env:
@@ -20,7 +20,7 @@ jobs:
       run: bash -c "$(curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh) --i-agree-to-the-contained-eula --accept --no-interactive"
 
     - name: Build helloworld.c with gcc
-      run: gcc-14 -o helloworld.gcc helloworld.c
+      run: gcc-12 -o helloworld.gcc helloworld.c
 
     - name: Run helloworld.gcc
       run: ./helloworld.gcc
@@ -32,4 +32,4 @@ jobs:
       run: ./helloworld.acfl
 
     - name: report compiler version
-      run: gcc-14 --version
+      run: gcc-12 --version 
