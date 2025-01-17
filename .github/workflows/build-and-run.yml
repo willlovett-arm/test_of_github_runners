@@ -14,8 +14,11 @@ jobs:
     - name: Install GCC
       run: sudo apt-get update && sudo apt-get install -y gcc-14
 
-    - name: install ACfL
-      run: curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh -o /tmp/install.sh && sudo /tmp/install.sh --i-agree-to-the-contained-eula --accept --no-interactive
+    - name: Get ACfL installer
+      run: curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh
+      
+    - name: Install ACfL
+      run: sudo /tmp/install.sh --i-agree-to-the-contained-eula --accept --no-interactive
 
     - name: Build helloworld.c with gcc
       run: gcc-14 -o helloworld.gcc helloworld.c
