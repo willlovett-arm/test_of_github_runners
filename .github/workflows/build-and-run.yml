@@ -17,7 +17,7 @@ jobs:
     - name: Install ACfL
       env:
         DEFAULT_DISTRIBUTION: "Ubuntu-22.04"
-      run: bash -c "$(curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh) --i-agree-to-the-contained-eula --accept --no-interactive"
+      run: bash -c "$(curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh)"
 
     - name: Build helloworld.c with gcc
       run: gcc-12 -o helloworld.gcc helloworld.c
