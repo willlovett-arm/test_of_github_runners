@@ -14,11 +14,20 @@ jobs:
     - name: Install GCC
       run: sudo apt-get update && sudo apt-get install -y gcc-14
 
-    - name: Build helloworld.c
-      run: gcc-14 -o helloworld helloworld.c
+    - name: install ACfL
+      run: sudo bash <(curl -L https://developer.arm.com/-/cdn-downloads/permalink/Arm-Compiler-for-Linux/Package/install.sh)
 
-    - name: Run helloworld
-      run: ./helloworld
+    - name: Build helloworld.c with gcc
+      run: gcc-14 -o helloworld.gcc helloworld.c
+
+    - name: Run helloworld.gcc
+      run: ./helloworld.gcc
+
+    - name: Build helloworld.c with ACfL
+      run: armclang -o helloworld.acfl helloworld.c
+
+    - name: Run helloworld with ACfL
+      run: ./helloworld.acfl
 
     - name: report compiler version
       run: gcc-14 --version
